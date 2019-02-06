@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="menu">
+            <button id="clientView" onclick="toggleView('client')">Client View</button>
+            <button id="executiveView" onclick="toggleView('admin')">Admin View</button>
+        </div>
+        <!-- <div class="desc">
+            <div class="todo">
+                <h1>Ecommerce product</h1>
+            </div>
+        </div> -->
+
+        <div class="content">
+            <!-- content here -->
+            <div class="product-grid product-grid--flexbox">
+                <div class="product-grid__wrapper" id="admin-container">
+                    <h1>Admin View</h1>
+                    <!-- <div class="menu control">
+                        <button onclick="addEmployeeView()">+</button>
+                    </div> -->
+                    <div class="menu control">
+                        <button onclick="sortProductAlphabetical()">A &#x21e8; Z</button>
+                    </div>
+                    <div id="admin-view">
+
+                    </div>
+                </div>
+                <div class="product-grid__wrapper" id="client-container">
+                    <h1>Client View</h1>
+                    <div class="menu control">
+                        <button onclick="sortProductAlphabetical()">A &#x21e8; Z</button>
+                    </div>
+                    <div id="client-view">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <script src="./BridgePattern.js"></script>
+            <script>
+                let main = new BridgePattern();
+                console.log(main.itemRecord.draw());
+
+                function buy(productIndex) {
+                    main.itemRecord.makePurchase(productIndex)
+                }
+
+                function toggleView(view) {
+                    if (view == 'client') {
+                        console.log('client')
+                        main.toggleView('client');
+                    } else {
+                        console.log('admin')
+                        main.toggleView('admin');
+                    }
+                }
+
+                function addEmployeeView() {
+                    console.log('add employee view');
+                    main.itemRecord.addProduct('New Product', 'very alkdjfaldjfaldskjf;adsljf;asldjfalsdkjf;asdlf',
+                        3000, 10);
+                }
+
+                function sortProductAlphabetical() {
+                    main.itemRecord.sortByName();
+                    main.draw();
+                    // main.itemRecord.setView();
+                }
+
+                // let main = new Main();
+                // console.log(main.getAdminView())
+
+                // function buy(productIndex) {
+                //     main.makePurchase(productIndex)
+                // }
+
+                // function toggleView(view) {
+                //     if (view == 'client') {
+                //         main.toggleView('client');
+                //     } else {
+                //         main.toggleView('admin');
+                //     }
+                // }
+
+                // function addEmployeeView() {
+                //     console.log('add employee view');
+                //     main.addProduct('New Product', 'very alkdjfaldjfaldskjf;adsljf;asldjfalsdkjf;asdlf', 3000, 10);
+                // }
+
+                // function sortProductAlphabetical() {
+                //     main.sortByName();
+                //     main.setView();
+                // }
+            </script>
+</body>
+
+</html>
