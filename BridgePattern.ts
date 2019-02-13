@@ -202,21 +202,13 @@ class ViewAbstraction {
 
     draw() {
         this.view.draw(this.productList);
-
-
     }
 
     setView(view: View) {
         this.view = view;
     }
 
-    addProduct(name: string, description: string, price: number, inStock: number) {
-        let newProduct = new Product(name, description, price, inStock);
-        this.productList.push(newProduct);
 
-        this.view.draw(this.productList);
-        // this.setView();
-    }
 
     sortByName() {
         return this.productList.sort(this.sortByNameHelper);
